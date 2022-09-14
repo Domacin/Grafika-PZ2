@@ -1,0 +1,75 @@
+﻿<Window x:Class="PZ2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PZ2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900">
+    <Grid>
+        <Viewport3D ClipToBounds="true" Name="viewport" MouseWheel="viewport_MouseWheel" MouseLeftButtonDown="viewport_MouseLeftButtonDown" MouseLeftButtonUp="viewport_MouseLeftButtonUp"
+                    MouseMove="viewport_MouseMove" MouseDown="viewport_MouseDown" MouseUp="viewport_MouseUp" Width="1000" Height="700" >
+            <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="CameraView" Position="6.3,-8,8" LookDirection="0, 8, -8" FieldOfView="65" UpDirection="0,1,0" />
+            </Viewport3D.Camera>
+
+
+            <ModelVisual3D>
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <ScaleTransform3D x:Name="skaliranje" ScaleX="1" ScaleY="1" ScaleZ="1"/>
+                        <TranslateTransform3D x:Name="translacija" OffsetX="0" OffsetY="0" OffsetZ="0"/>
+
+                        <RotateTransform3D CenterX="5" CenterY="5" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D x:Name="RotaionX" Axis="1,0,0"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+
+                        <RotateTransform3D CenterX="5" CenterY="5" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D x:Name="RotaionY" Axis="0,1,0"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+
+
+                <ModelVisual3D.Content>
+                    <Model3DGroup x:Name="Group">
+                        <AmbientLight Color="White"/>
+                        <GeometryModel3D x:Name="geometryModel" >
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D x:Name="MainMesh" Positions = "0,0,0 10,0,0 10,10,0 0,10,0"  
+                                        TriangleIndices = "0,1,2 0,2,3"
+                                        TextureCoordinates="0,1 1,1 1,0 0,0" >
+                                </MeshGeometry3D>
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <ImageBrush ViewportUnits="Absolute" ImageSource="C:\Users\vukmi\OneDrive\Radna površina\Grafika pz2\PZ2\PZ2\Images\map.jpg"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+
+                        </GeometryModel3D>
+                    </Model3DGroup>
+
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+        </Viewport3D>
+        <RadioButton Name="RadioShow" Checked="RadioShow_Checked" Content="Show all lines" IsChecked ="True"  HorizontalAlignment="Left" Margin="20,19,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="RadioHide" Checked="RadioHide_Checked" IsChecked="True" Content="Hide all lines" HorizontalAlignment="Left" Margin="20,39,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="OpenStatus" Checked="OpenStatus_Checked" Content="Status Open" HorizontalAlignment="Left" Margin="20,59,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="CloseStatus" Checked="CloseStatus_Checked" Content="Status Closed" HorizontalAlignment="Left" Margin="20,79,0,0" VerticalAlignment="Top"/>
+        <Label Content="Substation" HorizontalAlignment="Left" Margin="698,13,0,0" VerticalAlignment="Top" Height="33" Width="70"/>
+        <Rectangle Height="10" Width="10" Margin="0,24,112,0" HorizontalAlignment="Right" VerticalAlignment="Top" Fill="Blue"/>
+        <Label Content="Switch" HorizontalAlignment="Left" Margin="698,51,0,0" VerticalAlignment="Top"/>
+        <Rectangle Height="10" Width="10" HorizontalAlignment="Right" VerticalAlignment="Top" Fill="Purple" Margin="0,59,112,0"/>
+        <Label Content="Node" HorizontalAlignment="Left" Margin="698,86,0,0" VerticalAlignment="Top"/>
+        <Rectangle Height="10" Width="10" VerticalAlignment="Top" HorizontalAlignment="Right" Fill="Aqua" Margin="0,94,112,0"/>
+    </Grid>
+</Window>
